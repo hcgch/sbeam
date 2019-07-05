@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sbeam.dao.recommend.RecommendGames">
+    <select id="getRecommendGames" resultType="Games">
+     select * from game_info order by rand() limit 0,8
+    </select>
+
+    <select id="getGamesByType" resultType="Games">
+     select * from game_info where type=#{type,jdbcType=INTEGER} order by rand() limit 0,2
+    </select>
+</mapper>
