@@ -56,7 +56,27 @@
                             <div class="top-search-area">
                                 <form action="#" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Search">
-                                    <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+                                    <button type="submit" class="btn"><i class="fa fa-search" ></i></button>
+                                    <a href="#" class="searchOK" onclick="koo(topSearch.value)">999</a>
+                                    <script>
+                                    function koo(data){
+                                        location.href="/game-review.html?"+data;
+                                        console.log(123);
+                                    }
+                                    </script>
+                                    <style>
+                                    .searchOK{
+                                        display: block;
+                                        width: 50px;
+                                        height: 100px;
+                                        background: red;
+                                        position: absolute;
+                                        top:1px;
+                                        right: 1px;
+                                        z-index: 99;
+                                        opacity: 0;
+                                    }
+                                    </style>
                                 </form>
                             </div>
                             <!-- Login Area -->
@@ -954,13 +974,13 @@
     <script src="js/active.js"></script>
 
     <script type="text/javascript">
-        <!--// $("#img").function(){-->
+        // $("#img").function(){
            $.ajax({
                 type: "post",//请求类型
                 url: "/test",//请求地址
                // async:false,
                 dataType: 'json',//接收后台数据的格式
-                 data : {　　　　　　　　　　　<!--&lt;!&ndash;data ：发送给服务器的数据 &ndash;&gt;-->
+                 data : {　　　　　　　　　　　//&lt;!&ndash;data ：发送给服务器的数据 &ndash;&gt;
                     // uUsername : u,　　　　　　  &lt;!&ndash; 使用自己声明的对象 &ndash;&gt;
                     // uPwd : $("#pwd").val()　　　 //直接获取页面对象
                 },
