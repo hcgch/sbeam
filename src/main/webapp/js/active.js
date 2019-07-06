@@ -208,4 +208,61 @@
         });
     }
 
+    function innerData(data){
+        var strDataData = ''
+        try{
+            var gropData = JSON.parse(data);
+            gropData = Array.from(gropData.data);
+            gropData.map(function(item,index){
+                strDataData += `<div class="single-game-review-area d-flex flex-wrap mb-30">
+                <div class="game-thumbnail">
+                        <img src="${item[index].img_path}" alt="">
+                    </div>
+                    <div class="game-content">
+                        <span class="game-tag">${item[index].gamename}</span>
+                        <a href="single-game-review.html" class="game-title">${item[index].now_price}</a>
+                        <div class="game-meta">
+                            <a href="#" class="game-date">${item[index].origin_price}</a>
+                            <a href="#" class="game-comments">${item[index].discount}</a>
+                        </div>
+                        <p>${item[index].desc}</p>
+                        
+                        <div class="download-rating-area d-flex align-items-center justify-content-between">
+                            <div class="download-area">
+                                <a href="#"><img src="img/core-img/app-store.png" alt=""></a>
+                                <a href="#"><img src="img/core-img/google-play.png" alt=""></a>
+                            </div>
+                            <div class="rating-area text-center">
+                                <h3>9.1</h3>
+                                <div class="stars">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+            })
+        
+            $('.game-review-area .container .row .col-12').html(strDataData);
+        }catch(e){
+            console.log('传JSON格式');
+        }
+    }
+
+        $.ajax({
+            type: "get",//请求类型
+            url: "/searchGames",//请求地址
+            // async:false,
+            dataType: 'json',
+            data : {data:window.location.search.substr(1)},
+            contentType:"application/json",
+            success:function(data){
+                innerData(data);
+            }
+        })
+
 })(jQuery);
